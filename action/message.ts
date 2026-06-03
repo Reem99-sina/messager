@@ -1,3 +1,4 @@
+'use client'
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "./api";
 import toast from "react-hot-toast";

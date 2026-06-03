@@ -1,3 +1,4 @@
+'use client'
 import { User } from "@prisma/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "./api";
