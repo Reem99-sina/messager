@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real-Time Chat Application
 
-## Getting Started
+A modern real-time chat application built with Next.js, Prisma, MongoDB, Pusher, and Cloudinary.
 
-First, run the development server:
+## Features
+
+* User Authentication
+* Real-time messaging with Pusher
+* Online/Offline user status
+* Private conversations
+* Image sharing with Cloudinary
+* Message deletion
+* Message read receipts (Seen status)
+* Last read timestamp tracking
+* Responsive UI
+* Dark/Light theme support
+
+## Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* React Hook Form
+* React Query
+
+### Backend
+
+* Next.js Route Handlers
+* Prisma ORM
+* MongoDB
+
+### Realtime
+
+* Pusher
+
+### Media Storage
+
+* Cloudinary
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/Reem99-sina/messager
+cd chat-app
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Create a `.env` file:
+
+```env
+DATABASE_URL="mongodb+srv://reemsina:reemsina@cluster0.bsibg3y.mongodb.net/test"
+NEXTAUTH_SECRET=NEXTAUTH_SECRET
+GITHUB_ID=57f967eb72cf822707b6
+GITHUB_SECRET=f783fe8335ed501c04e02cf8aff60d0d971380ab
+GOOGLE_CLIENT_ID=785244684789-fpn3e4oe81q9ido274md3vjh11k87ip1.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dbgqtdyw9
+NEXT_PUBLIC_CLOUDINARY_API_KEY=935349317259654
+NEXT_PUBLIC_CLOUDINARY_API_SECRET=1NQlZ7dnvmUsxI7hA0m9xjv7ZV4
+PUSHER_APP_ID = 1766171
+NEXT_PUBLIC_PUSHER_APP_KEY = efa0a431ee67f6e32861
+PUSHER_SECRET = b495c7823a042bde74dd
+NODE_ENV=development
+CLUSTER = eu
+EMAIL_USER=reemsina2@gmail.com
+EMAIL_PASS=A6dg7ia4@
+PASSWORD_SECRET=ewrr qaml sknk reeg
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+```
+
+### Prisma
+
+Generate Prisma Client:
+
+```bash
+npx prisma generate
+```
+
+Push Schema:
+
+```bash
+npx prisma db push
+```
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Application will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Database Structure
 
-## Learn More
+### User
 
-To learn more about Next.js, take a look at the following resources:
+* id
+* name
+* email
+* password
+* avatarUrl
+* isVerified
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Conversation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* id
+* title
+* participants
+* messages
 
-## Deploy on Vercel
+### Message
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* id
+* body
+* imageUrl
+* imageName
+* senderId
+* conversationId
+* createdAt
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### MessageSeen
+
+* id
+* messageId
+* userId
+* seenAt
+
+### ConversationParticipant
+
+* id
+* userId
+* conversationId
+* lastReadAt
+
+## Read Receipts
+
+The application tracks message reads using:
+
+* `ConversationParticipant.lastReadAt`
+* `MessageSeen`
+
+This allows:
+
+* Seen status
+* Last active information
+* Read tracking per user
+
+
+
