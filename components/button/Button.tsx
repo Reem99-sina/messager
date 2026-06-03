@@ -14,7 +14,7 @@ interface InputProps {
 const Button: React.FC<InputProps> = ({
   fullWidth,
   type,
-  required,
+ 
   onClick,
   children,
   secondary,

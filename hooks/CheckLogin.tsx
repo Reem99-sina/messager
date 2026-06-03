@@ -1,9 +1,8 @@
 "use client";
 
-import { createContext, useContext, ReactNode, useEffect } from "react";
+import { createContext, useContext, ReactNode } from "react";
 
 import { User } from "@prisma/client";
-import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/action/Register";
 
 type CheckLoginContextType = {
@@ -17,17 +16,17 @@ const CheckLoginContext = createContext<CheckLoginContextType | undefined>(
 
 export function CheckLoginProvider({ children }: { children: ReactNode }) {
   const { data: user, isLoading } = useCurrentUser();
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    if (!isLoading && !user) {
-      router.replace("/login");
-    }
-  }, [user, isLoading, router]);
+  // useEffect(() => {
+  //   if (!isLoading && !user) {
+  //     router.replace("/login");
+  //   }
+  // }, [user, isLoading, router]);
 
-  if (isLoading) {
-    return <div className='p-2 flex items-center justify-center'>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div className='p-2 flex items-center justify-center'>Loading...</div>;
+  // }
 
 
 

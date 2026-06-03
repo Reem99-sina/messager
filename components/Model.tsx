@@ -1,7 +1,7 @@
 "use client";
 import { Transition, Dialog } from "@headlessui/react";
-import { useMemo, Fragment } from "react";
-import { IoClose, IoTrash } from "react-icons/io5";
+import {  Fragment } from "react";
+import { IoClose } from "react-icons/io5";
 
 const Model = ({
   isOpen,

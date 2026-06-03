@@ -30,7 +30,6 @@ const Input = <T extends FieldValues>({
   errors,
   disabled,
   accept,
-  ref,
 }: InputProps<T>) => {
   return (
     <div>

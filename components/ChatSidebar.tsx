@@ -16,11 +16,11 @@ import { useOnlineUsers } from "@/zustand/onlineUser";
 
 export default function ChatSidebar() {
   const [query, setQuery] = useState("");
-  const [activeIds, setActiveIds] = useState<string[]>([]);
+  const [activeIds, ] = useState<string[]>([]);
   const { data } = useUsers();
   const { user } = useCheck();
   const { logout } = useAuth();
-  const { set, remove } = useConversationList();
+  const { set } = useConversationList();
   const { mutateAsync } = useCreateConversation();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [open, setOpen] = useState(false);
@@ -49,9 +49,7 @@ export default function ChatSidebar() {
     // redirect to conversation
     // router.push(`/chat/${conversation.id}`);
   };
-  const removeConversation = () => {
-    remove();
-  };
+ 
   const userInConversation = useMemo(() => {
     return (conversation: Conversation) => {
       const sameUser = conversation.participants.every(

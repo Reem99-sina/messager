@@ -13,7 +13,7 @@ import toast from "react-hot-toast";
 import { useRegister } from "@/action/Register";
 
 export default function RegisterForm() {
-  const [submittedData, setSubmittedData] = useState<FieldValues | null>(null);
+  const [submittedData, ] = useState<FieldValues | null>(null);
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { mutateAsync } = useRegister();

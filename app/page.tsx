@@ -10,7 +10,7 @@ import { useOnlineUsers } from "@/zustand/onlineUser";
 import { useMemo } from "react";
 
 export default function Home() {
-  const { data: user, isLoading } = useCurrentUser();
+  const { data: user } = useCurrentUser();
   const { conversations, remove } = useConversationList();
   const { onlineUsers } = useOnlineUsers();
 
