@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+/* LIGHT THEME */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 248 250 252;   /* slate-50 */
+  --foreground: 15 23 42;      /* slate-900 */
+
+  --primary: 59 130 246;       /* blue-500 */
+  --primary-soft: 219 234 254; /* blue-100 */
+
+  --secondary: 241 245 249;    /* slate-100 */
+
+  --card: 255 255 255;
+
+  --border: 226 232 240;
+
+  --bubble-me: 59 160 246;     /* message sent */
+  --bubble-me-text: 255 255 255;
+
+  --bubble-other: 241 245 249; /* message received */
+  --bubble-other-text: 15 23 42;
+
+  --success: 34 197 94;
+  --danger: 239 68 68;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* DARK THEME */
+.dark {
+  --background: 2 6 23;        /* slate-950 */
+  --foreground: 248 250 252;
+
+  --primary: 96 165 250;
+  --primary-soft: 30 64 175;
+
+  --secondary: 30 41 59;
+
+  --card: 15 23 42;
+
+  --border: 51 65 85;
+
+  --bubble-me: 59 130 246;
+  --bubble-me-text: 255 255 255;
+
+  --bubble-other: 30 41 59;
+  --bubble-other-text: 248 250 252;
+
+  --success: 34 197 94;
+  --danger: 239 68 68;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .bg-background {
+    background-color: rgb(var(--background));
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .text-foreground {
+    color: rgb(var(--foreground));
+  }
+
+  .bg-primary {
+    background-color: rgb(var(--primary));
+  }
+
+  .bg-primary-soft {
+    background-color: rgb(var(--primary-soft));
+  }
+
+  .bg-secondary {
+    background-color: rgb(var(--secondary));
+  }
+
+  .bg-card {
+    background-color: rgb(var(--card));
+  }
+
+  .border-border {
+    border-color: rgb(var(--border));
+  }
+
+  /* CHAT BUBBLES */
+  .bubble-me {
+    background-color: rgb(var(--bubble-me));
+    color: rgb(var(--bubble-me-text));
+  }
+
+  .bubble-other {
+    background-color: rgb(var(--bubble-other));
+    color: rgb(var(--bubble-other-text));
+  }
+
+  .text-primary {
+    color: rgb(var(--primary));
+  }
+
+  .text-success {
+    color: rgb(var(--success));
+  }
+
+  .text-danger {
+    color: rgb(var(--danger));
+  }
 }
