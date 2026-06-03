@@ -1,3 +1,4 @@
+'use client'
 import { useCheck } from "@/hooks/CheckLogin";
 import { Conversation, Message } from "@/types/user";
 import Button from "./button/Button";

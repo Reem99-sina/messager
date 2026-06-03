@@ -13,7 +13,7 @@ export function usePusherMessages(conversationId: string) {
     const pusherClient = getPusherClient();
     const channel = pusherClient?.subscribe(`conversation-${conversationId}`);
 
-    channel?.bind("message:new", (message: Message) => {
+    channel?.bind("message:new", () => {
       queryClient.invalidateQueries({
         queryKey: ["conversation", conversationId],
       });
@@ -23,7 +23,7 @@ export function usePusherMessages(conversationId: string) {
         queryKey: ["conversation", data?.conversationId],
       });
     });
-    channel?.bind("conversation:read", (data: Message) => {
+    channel?.bind("conversation:read", () => {
       
       queryClient.invalidateQueries({
         queryKey: ["conversation",conversationId],
