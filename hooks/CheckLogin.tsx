@@ -1,9 +1,10 @@
 "use client";
 
-import { createContext, useContext, ReactNode } from "react";
+import { createContext, useContext, ReactNode, useEffect } from "react";
 
 import { User } from "@prisma/client";
 import { useCurrentUser } from "@/action/Register";
+import { useRouter } from "next/navigation";
 
 type CheckLoginContextType = {
   user?: User | null;

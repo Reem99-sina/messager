@@ -1,8 +1,11 @@
 import { clearLocalStorage, loadLocalStorage } from "@/libs/storage";
 
-
-
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
 
 export async function apiRequest(path: string, options: any = {}) {
   const token = await loadLocalStorage("authToken");
@@ -13,16 +16,16 @@ export async function apiRequest(path: string, options: any = {}) {
     options.body.constructor &&
     options.body.constructor.name === "FormData";
 
-  const isEmptyBody =
-    options.body === undefined ||
-    options.body === null;
+  const isEmptyBody = options.body === undefined || options.body === null;
 
   const headers: any = {
-    ...(token && { Authorization: `Bearer ${token.toString().trim()}` }),
+    ...(token && {
+      Authorization: `Bearer ${token.toString().trim()}`
+    }),
     ...options.headers,
+    ...corsHeaders
   };
 
-  
   if (!isFormData && !isEmptyBody) {
     headers["Content-Type"] = "application/json";
   }
